@@ -1,0 +1,11 @@
+.DS_Store
+__pycache__/
+# personal data: keep local, never commit
+apply/profile.json
+apply/*.pdf
+apply/master/
+apply/resumes/
+apply/applied_log.csv
+apply/accounts_needed.csv
+output/
+Claude outputs/

@@ -1,0 +1,54 @@
+{
+  "_note": "Copy this file to apply/profile.json and fill it in. Anything left null is NEVER guessed: the assistant stops and asks you. apply/profile.json is git-ignored.",
+  "personal": {
+    "full_name": "Your Name",
+    "email": "you@example.com",
+    "phone": "+91 00000 00000",
+    "current_location": "City, Country",
+    "open_to_relocate": true,
+    "open_to_remote": true,
+    "preferred_work_modes": "Onsite, hybrid or remote",
+    "gender": null
+  },
+  "links": {
+    "linkedin": "",
+    "github": "",
+    "leetcode": "",
+    "portfolio": ""
+  },
+  "work": {
+    "current_company": "",
+    "current_title": "",
+    "total_experience_years": 0,
+    "currently_employed": true,
+    "notice_period": "",
+    "earliest_joining_date": "",
+    "current_ctc": "",
+    "expected_ctc": "",
+    "ctc_negotiable": true,
+    "last_working_day": null
+  },
+  "education": {
+    "degree": "",
+    "university": "",
+    "years": "",
+    "cgpa": "",
+    "percentage_equivalent": null
+  },
+  "eligibility": {
+    "authorized_to_work_in_india": true,
+    "needs_visa_sponsorship": null,
+    "willing_for_background_check": null,
+    "previously_applied_or_employed_at_target_company": "ask each time"
+  },
+  "skills": {
+    "languages": [],
+    "backend": [],
+    "databases": [],
+    "years_by_skill": "Use <your years> for any skill listed on the resume. For skills NOT on the resume, stop and ask."
+  },
+  "diversity_questions": "Prefer not to say / decline for all demographic questions.",
+  "resume_pdf": "apply/my_resume.pdf",
+  "cover_letter": "Only if the form requires it: draft from the job description and resume, show it for approval first",
+  "saved_screening_answers": {}
+}

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Job finder: pulls openings from several sources, keeps only roles that match your
-filters (backend / full stack / agentic AI, 0-3 years or unspecified), removes
+filters (backend / full stack / agentic AI, under 3 years (0-2) or unspecified), removes
 duplicates, and writes one Excel sheet with Apply links.
 
 Run any time:   python3 jobs.py
@@ -288,13 +288,17 @@ def category_of(job):
 
 
 def location_ok(job, cfg):
+    """Keep: remote (no country restriction, or India), or onsite/hybrid in the configured Indian cities."""
     loc = (job["location"] + " " + job["title"]).lower()
     if any(c in loc for c in cfg["locations_india"]):
         return True
-    if cfg["include_global_remote"] and (job["remote"] or "remote" in loc or "worldwide" in loc
-                                         or "anywhere" in loc):
-        # "Remote - USA", "Remote, Canada" etc. are not open to you; plain "Remote" is.
+    has_remote = job["remote"] or any(w in loc for w in ("remote", "worldwide", "anywhere"))
+    if cfg["include_global_remote"] and has_remote:
+        # "Remote - USA", "Remote, Canada", "Remote - San Francisco" etc. are not open to you.
         if any(re.search(r"\b" + re.escape(w) + r"\b", loc) for w in cfg["non_india_regions"]):
+            return False
+        # The remote flag alone doesn't override a named non-India place (e.g. "San Francisco").
+        if job["location"] and not any(w in loc for w in ("remote", "worldwide", "anywhere", "india")):
             return False
         return True
     return job["location"] == ""  # unknown location: keep, let the user judge
@@ -398,7 +402,7 @@ def load_previous_status(path):
     try:
         from openpyxl import load_workbook
         wbk = load_workbook(path)
-        for name in ("Jobs", "Experience Not Stated"):
+        for name in ("Jobs", "Experience Not Stated", "No Posted Date"):
             if name not in wbk.sheetnames:
                 continue
             ws = wbk[name]
@@ -461,12 +465,15 @@ def write_excel(jobs, path, new_ids, prev=None):
         sheet.freeze_panes = "A2"
         sheet.auto_filter.ref = sheet.dimensions
 
-    stated = [j for j in ordered if j["experience"] != "Not stated"]
+    dated = [j for j in ordered if j["days_ago"] is not None]
+    stated = [j for j in dated if j["experience"] != "Not stated"]
     fill(ws, stated)
     top = wb.create_sheet("Top Companies")
     fill(top, [j for j in stated if j["tier"]])
     # Postings that don't mention experience: kept apart so you can judge them separately.
-    fill(wb.create_sheet("Experience Not Stated"), [j for j in ordered if j["experience"] == "Not stated"])
+    fill(wb.create_sheet("Experience Not Stated"), [j for j in dated if j["experience"] == "Not stated"])
+    # Postings with no posted date can't be age-filtered, so they get their own sheet.
+    fill(wb.create_sheet("No Posted Date"), [j for j in ordered if j["days_ago"] is None])
 
     ws2 = wb.create_sheet("Search Links")
     ws2.append(["Portal", "Search", "Open"])
@@ -539,14 +546,18 @@ def main():
     new_ids = {j["id"] for j in matched} - seen
     seen_file.write_text(json.dumps(sorted(seen | {j["id"] for j in matched})))
 
-    stamp = dt.datetime.now().strftime("%Y-%m-%d_%H%M")
-    xlsx = out_dir / f"jobs_{stamp}.xlsx"
+    today = dt.date.today().isoformat()
+    run_no = 1
+    while (out_dir / f"{today}_{run_no}.xlsx").exists():
+        run_no += 1
+    stamp = f"{today}_{run_no}"  # e.g. 2026-10-26_1, 2026-10-26_2 for a second run that day
+    xlsx = out_dir / f"{stamp}.xlsx"
     latest = out_dir / "jobs_latest.xlsx"
     write_excel(matched, xlsx, new_ids, load_previous_status(latest))
     import shutil
     shutil.copy(xlsx, latest)  # the file to keep open; your Status/Notes carry into the next run
     # JSON copy: input for the later "tailor resume + cover letter and apply" step
-    (out_dir / f"jobs_{stamp}.json").write_text(json.dumps(
+    (out_dir / f"{stamp}.json").write_text(json.dumps(
         [{k: v for k, v in j.items() if k != "text"} | {"description": j["text"]} for j in matched],
         indent=1))
     log(f"\n{len(matched)} matching jobs ({len(new_ids)} new) -> {xlsx}")
