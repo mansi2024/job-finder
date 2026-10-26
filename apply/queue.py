@@ -30,9 +30,12 @@ for ws in wb:
         seen.add(url); title=(g('Title') or ''); company=(g('Company') or '')
         if g('Status') not in cfg['statuses_to_apply']: continue
         if g('Category') not in cfg['categories']: continue
+        if any(w in company.lower() for w in cfg.get('company_exclude',[])): continue
         if any(w in title.lower() for w in cfg['title_exclude']): continue
         if url in done_urls or (company.lower(),title.lower()) in done_keys: continue
         loc=(g('Location') or '').lower()
+        if any(w in (title+' '+company).lower() for w in cfg['location_exclude']+[' ny, us',', us','in office']): continue
+        if (g('Source') or '')=='Y Combinator' and not any(w in (title+' '+loc).lower() for w in ['india','remote']): continue
         if loc:
             if any(w in loc for w in cfg['location_exclude']): continue
             if not any(w in loc for w in cfg['location_allow']): continue

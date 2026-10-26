@@ -9,3 +9,4 @@
 6. After submitting: set Status to "Applied" and add the date in Notes. If skipped: "Skipped" with a reason.
 7. Stop and hand over to the user for login, OTP, CAPTCHA, or payment/assessment steps.
 8. Human pace: no bulk blasting. Pause between applications, especially on LinkedIn and Naukri.
+9. Sites that need an account or sign-in: NEVER create accounts or enter passwords. Log the site in apply/accounts_needed.csv (date, company, job, site, needs, link, status, note), mark the job "Needs review", and continue with the next job. At the end of every run, list these for the user with direct links. The user creates the account herself inside the Claude browser pane (so the login stays available). When the user says it is done, reopen that job and apply, with her per-job approval.
