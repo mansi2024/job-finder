@@ -1,5 +1,5 @@
 {
-  "max_years_experience": 3,
+  "max_years_experience": 2,
   "title_include": [
     "backend",
     "back-end",
@@ -59,11 +59,10 @@
     "hyderabad",
     "mumbai",
     "delhi",
+    "new delhi",
     "gurgaon",
     "gurugram",
     "noida",
-    "chennai",
-    "kolkata",
     "ahmedabad"
   ],
   "include_global_remote": true,
@@ -94,7 +93,18 @@
     "portugal",
     "romania",
     "argentina",
-    "colombia"
+    "colombia",
+    "california",
+    "san francisco",
+    "new york",
+    "nyc",
+    "seattle",
+    "austin",
+    "boston",
+    "los angeles",
+    "toronto",
+    "london",
+    "berlin"
   ],
   "_renowned_note": "Curated by judgement, not live data. Verify pay on Levels.fyi / AmbitionBox (Check pay column). Edit freely.",
   "renowned_companies": {
@@ -184,7 +194,7 @@
       "persistent systems"
     ]
   },
-  "max_age_days": 10,
+  "max_age_days": 2,
   "sources": {
     "himalayas": true,
     "career_pages": true,
@@ -269,10 +279,10 @@
     "profile_dir": "~/.jobfinder-profile",
     "headless": false,
     "scrolls": 6,
-    "hiringcafe_days": 10,
+    "hiringcafe_days": 2,
     "naukri_experience": 2,
     "naukri_pages": 3,
-    "naukri_job_age": 15
+    "naukri_job_age": 3
   },
   "title_exclude_regex": [
     "\\bios\\b",

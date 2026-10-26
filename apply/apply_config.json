@@ -32,7 +32,15 @@
     "staff",
     "tester",
     "trainer",
-    "walk-in"
+    "walk-in",
+    "sdet",
+    "test engineer",
+    "automation engineer",
+    "campus",
+    "graduate",
+    "trainee",
+    "apprentice",
+    "fellowship"
   ],
   "rank": {
     "tier": {
@@ -74,7 +82,29 @@
     "singapore",
     "dubai",
     "germany",
-    "australia"
+    "australia",
+    "san francisco",
+    "california",
+    "seattle",
+    "austin",
+    "boston",
+    "chicago",
+    "texas",
+    "washington",
+    "new jersey",
+    ", ca",
+    "remote (us",
+    "us only",
+    "netherlands",
+    "ireland",
+    "france",
+    "japan",
+    "israel",
+    "brazil",
+    "mexico"
   ],
-  "accept_missing_location": true
+  "accept_missing_location": true,
+  "company_exclude": [
+    "databricks"
+  ]
 }
