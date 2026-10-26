@@ -4,7 +4,7 @@
 2. Open the Apply link in the logged-in browser. Fill from apply/profile.json and the resume ONLY.
 3. Never invent an answer. Unknown or null field, or an unfamiliar screening question: stop and ask.
    New answers the user gives are saved to saved_screening_answers for reuse.
-4. After each submission, report a short summary: job, company, answers given, resume used.
+4. Before submitting, show a review card: job, company, every field and answer, resume used, screenshot.
 5. Submit ONLY after the user says "submit" for that specific job. One approval = one application.
 6. After submitting: set Status to "Applied" and add the date in Notes. If skipped: "Skipped" with a reason.
 7. Stop and hand over to the user for login, OTP, CAPTCHA, or payment/assessment steps.
