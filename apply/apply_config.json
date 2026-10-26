@@ -1,0 +1,92 @@
+{
+  "max_per_run": 5,
+  "statuses_to_apply": [
+    "To review"
+  ],
+  "categories": [
+    "Backend",
+    "Full Stack"
+  ],
+  "experience_filter": {
+    "candidate_years": 2.5,
+    "accept_if_min_years_at_most": 3,
+    "accept_if_max_years_at_least": 2,
+    "accept_not_stated": true
+  },
+  "title_exclude": [
+    ".net",
+    "android",
+    "architect",
+    "freelance",
+    "iii",
+    "instructor",
+    "intern",
+    "ios",
+    "lead",
+    "manager",
+    "php",
+    "principal",
+    "qa ",
+    "senior",
+    "sr ",
+    "sr.",
+    "staff",
+    "tester",
+    "trainer",
+    "walk-in"
+  ],
+  "rank": {
+    "tier": {
+      "Top-tier": 3,
+      "Well-known": 2
+    },
+    "category": {
+      "Backend": 2,
+      "Full Stack": 1
+    },
+    "use_skill_match": true
+  },
+  "skip_if_already_in_log": true,
+  "location_allow": [
+    "india",
+    "bengaluru",
+    "bangalore",
+    "pune",
+    "hyderabad",
+    "mumbai",
+    "delhi",
+    "gurgaon",
+    "gurugram",
+    "noida",
+    "chennai",
+    "kolkata",
+    "ahmedabad",
+    "remote"
+  ],
+  "location_exclude": [
+    "new york",
+    "usa",
+    "united states",
+    "u.s.",
+    "canada",
+    "london",
+    "uk",
+    "united kingdom",
+    "singapore",
+    "dubai",
+    "germany",
+    "australia"
+  ],
+  "accept_missing_location": true,
+  "tailor_resume": {
+    "enabled": true,
+    "only_for_tiers": [
+      "Top-tier"
+    ],
+    "master_tex": "apply/master/Mansi_Pandit_Resume.tex",
+    "output_dir": "apply/resumes",
+    "folder_per_company": true,
+    "must_stay_one_page": true,
+    "never_add_skills_or_metrics_not_in_master": true
+  }
+}
