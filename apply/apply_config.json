@@ -27,7 +27,6 @@
     "php",
     "principal",
     "qa ",
-    "senior",
     "sr ",
     "sr.",
     "staff",
@@ -77,16 +76,5 @@
     "germany",
     "australia"
   ],
-  "accept_missing_location": true,
-  "tailor_resume": {
-    "enabled": true,
-    "only_for_tiers": [
-      "Top-tier"
-    ],
-    "master_tex": "apply/master/Mansi_Pandit_Resume.tex",
-    "output_dir": "apply/resumes",
-    "folder_per_company": true,
-    "must_stay_one_page": true,
-    "never_add_skills_or_metrics_not_in_master": true
-  }
+  "accept_missing_location": true
 }
